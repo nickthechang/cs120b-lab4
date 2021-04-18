@@ -21,10 +21,18 @@ void Calc(){
   unsigned char A1 = PINA & 0x02;
   switch(SM1_STATE){
     case(SM1_Start):
-      SM1_STATE = SM1_Start2;
+      if(A1 && A0){
+        SM1_STATE = SM1_Zero;
+      }
+      else
+        SM1_STATE = SM1_Start2;
       break;
     case(SM1_Start2):
-      SM1_STATE = SM1_Init;
+      if(A1 && A0){
+        SM1_STATE = SM1_Zero;
+      }
+      else
+        SM1_STATE = SM1_Init;
       break;
     case(SM1_Init):
       if(A0 && A1){
