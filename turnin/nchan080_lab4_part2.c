@@ -27,11 +27,11 @@ void Calc(){
       SM1_STATE = SM1_Init;
       break;
     case(SM1_Init):
-      if(A0 && !A1){
-        SM1_STATE = SM1_Add;
-      }
-      else if(A0 && A1){
+      if(A0 && A1){
         SM1_STATE = SM1_Zero;
+      }
+      else if(A0 && !A1){
+        SM1_STATE = SM1_Add;
       }
       else if(!A0 && A1){
         SM1_STATE = SM1_Sub;
@@ -71,15 +71,16 @@ void Calc(){
       }
       break;
     case(SM1_Zero):
-      if(A0 && !A1){
+      if(!A1 && !A0){
+        SM1_STATE = SM1_Init;
+      }
+      else if(A0 && !A1){
         SM1_STATE = SM1_Wait1;
       }
       else if(A1 && !A0){
         SM1_STATE = SM1_Wait2;
       }
-      else if(!A1 && !A0){
-        SM1_STATE = SM1_Init;
-      }
+      
       break;
   }
   switch(SM1_STATE){
