@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum SM1_STATES {SM1_Start, SM1_Init, SM1_Add, SM1_Sub, SM1_Wait1, SM1_Wait2, SM1_Zero} SM1_STATE;
+enum SM1_STATES {SM1_Start, SM1_Init, SM1_Add, SM1_Sub, SM1_Wait1, SM1_Wait2, SM1_Zero, SM1_Start2} SM1_STATE;
 
 
 void Calc(){
@@ -21,6 +21,9 @@ void Calc(){
   unsigned char A1 = PINA & 0x02;
   switch(SM1_STATE){
     case(SM1_Start):
+      SM1_STATE = SM1_Start2;
+      break;
+    case(SM1_Start2):
       SM1_STATE = SM1_Init;
       break;
     case(SM1_Init):
@@ -95,7 +98,7 @@ void Calc(){
     case SM1_Zero:
       PORTC = 0;
       break;
-    case SM1_Start:
+    case SM1_Start2:
       PORTC = 7;
       break;
     default:
