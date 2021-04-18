@@ -25,7 +25,7 @@ void Light(){
       }
       break;
     case(SM1_OneOn):
-      if(A0){
+      if(!A0){
         SM1_STATE = SM1_ZeroOn;
       }
       break;
