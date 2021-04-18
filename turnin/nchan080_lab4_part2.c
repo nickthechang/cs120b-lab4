@@ -104,7 +104,7 @@ void Calc(){
         else if (!A1 && !A0){
           SM1_STATE = SM1_Wait3;
         }
-      break
+      break;
   }
   switch(SM1_STATE){
     case SM1_Add:
