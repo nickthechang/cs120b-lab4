@@ -60,7 +60,7 @@ void Calc(){
       if(!A0){
         SM1_STATE = SM1_Init;
       }
-      else if(A1){
+      else if(A1 && A0){
         SM1_STATE = SM1_Zero;
       }
       break;
@@ -80,7 +80,7 @@ void Calc(){
       if(!A1){
         SM1_STATE = SM1_Init;
       }
-      else if(A0){
+      else if(A1 && A0){
         SM1_STATE = SM1_Zero;
       }
       break;
