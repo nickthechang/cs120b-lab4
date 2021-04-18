@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum SM1_STATES {SM1_Start, SM1_Init, SM1_Add, SM1_Sub, SM1_Wait1, SM1_Wait2, SM1_Zero, SM1_Start2} SM1_STATE;
+enum SM1_STATES {SM1_Start, SM1_Init, SM1_Add, SM1_Sub, SM1_Wait1, SM1_Wait2, SM1_Wait3, SM1_Zero, SM1_Start2} SM1_STATE;
 
 
 void Calc(){
@@ -84,9 +84,9 @@ void Calc(){
         SM1_STATE = SM1_Zero;
       }
       break;
-    case(SM1_Zero):
-      if(!A1 && !A0){
-        SM1_STATE = SM1_Init;
+    case(SM1_Wait3):
+      if(A1 && A0){
+        SM1_STATE = SM1_Zero;
       }
       else if(A0 && !A1){
         SM1_STATE = SM1_Wait1;
@@ -96,6 +96,15 @@ void Calc(){
       }
       
       break;
+      
+      case(SM1_Zero):
+        if(A1 && A0){
+          SM1_STATE = SM1_Zero;
+        }
+        else if (!A1 && !A0){
+          SM1_STATE = SM1_Wait3;
+        }
+      break
   }
   switch(SM1_STATE){
     case SM1_Add:
