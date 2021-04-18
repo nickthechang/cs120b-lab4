@@ -92,6 +92,9 @@ void Calc(){
       else
         PORTC--;
       break;
+    case SM1_Zero:
+      PORTC = 0;
+      break;
     default:
       break;
   }
