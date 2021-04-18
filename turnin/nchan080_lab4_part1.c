@@ -33,14 +33,11 @@ void Light(){
         SM1_STATE = SM1_Wait2;
       }
       break;
-    case(SM1_Wait2){
+    case(SM1_Wait2):
       if(!A0){
         SM1_STATE = SM1_ZeroOn;
       }
-
     }
-    
-  }
   switch(SM1_STATE){
     case SM1_ZeroOn:
       //B0 = 1;
