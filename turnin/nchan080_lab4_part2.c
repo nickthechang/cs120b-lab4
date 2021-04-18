@@ -96,7 +96,7 @@ void Calc(){
       PORTC = 0;
       break;
     case SM1_Start:
-      PORTC = 0;
+      PORTC = 7;
       break;
     default:
       break;
