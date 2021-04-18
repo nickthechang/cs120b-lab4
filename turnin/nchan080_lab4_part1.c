@@ -28,6 +28,7 @@ void Light(){
       if(!A0){
         SM1_STATE = SM1_OneOn;
       }
+      break;
     case(SM1_OneOn):
       if(A0){
         SM1_STATE = SM1_Wait2;
@@ -37,6 +38,7 @@ void Light(){
       if(!A0){
         SM1_STATE = SM1_ZeroOn;
       }
+      break;
     }
   switch(SM1_STATE){
     case SM1_ZeroOn:
@@ -55,8 +57,9 @@ void Light(){
     case SM1_Wait2:
       PORTB = 0x01;
       break;
-      
+
     default:
+      PORTB = 0x01;
       break;
   }
 }
