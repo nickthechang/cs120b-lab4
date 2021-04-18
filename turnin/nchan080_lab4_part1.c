@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum SM1_STATES {SM1_ZeroOn, SM1_OneOn} SM1_STATE;
+enum SM1_STATES {SM1_ZeroOn, SM1_OneOn, SM1_Wait, SM1_Wait2} SM1_STATE;
 
 
 void Light(){
@@ -21,14 +21,25 @@ void Light(){
   switch(SM1_STATE){
     case(SM1_ZeroOn):
       if(A0){
-        SM1_STATE = SM1_OneOn;
+        SM1_STATE = SM1_Wait;
       }
       break;
+    case(SM1_Wait):
+      if(!A0){
+        SM1_STATE = SM1_OneOn;
+      }
     case(SM1_OneOn):
+      if(A0){
+        SM1_STATE = SM1_Wait2;
+      }
+      break;
+    case(SM1_Wait2){
       if(!A0){
         SM1_STATE = SM1_ZeroOn;
       }
-      break;
+
+    }
+    
   }
   switch(SM1_STATE){
     case SM1_ZeroOn:
@@ -40,6 +51,8 @@ void Light(){
       //B0 = 0;
       //B1 = 1;
       PORTB = 0x02;
+      break;
+    default:
       break;
   }
 }
