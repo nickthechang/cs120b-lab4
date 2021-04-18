@@ -41,6 +41,9 @@ void Calc(){
       if(A0){
         SM1_STATE = SM1_Wait1;
       }
+      else if(A0 && A1){
+        SM1_STATE = SM1_Zero;
+      }
       else if(!A0){
         SM1_STATE = SM1_Init;
       }
@@ -57,6 +60,9 @@ void Calc(){
     case(SM1_Sub):
       if(A1){
         SM1_STATE = SM1_Wait2;
+      }
+      else if(A0 && A1){
+        SM1_STATE = SM1_Zero;
       }
       else if(!A1){
         SM1_STATE = SM1_Init;
