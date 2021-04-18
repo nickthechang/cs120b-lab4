@@ -49,6 +49,13 @@ void Light(){
       //B1 = 1;
       PORTB = 0x02;
       break;
+    case SM1_Wait:
+      PORTB = 0x02;
+      break;
+    case SM1_Wait2:
+      PORTB = 0x01;
+      break;
+      
     default:
       break;
   }
