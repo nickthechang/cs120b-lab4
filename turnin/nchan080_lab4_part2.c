@@ -77,7 +77,7 @@ void Calc(){
       else if(!A1 && !A0){
         SM1_STATE = SM1_Init;
       }
-
+  }
   switch(SM1_STATE){
     case SM1_Add:
       if(PORTC>=9)
