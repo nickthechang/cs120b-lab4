@@ -17,7 +17,7 @@ enum SM1_STATES {Start, Inside, Pressed, Released, Open} SM1_STATE;
 
 void Lock(){
 
-  //unsigned char A0 = PINA & 0x01;
+  unsigned char A0 = PINA & 0x01;
   unsigned char A1 = PINA & 0x02;
   unsigned char A2 = PINA & 0x04;
   unsigned char A7 = PINA & 0x80;
@@ -42,6 +42,11 @@ void Lock(){
         SM1_STATE = Open;
       }
       break;
+      
+    case(Open):
+      if(A7){
+        SM1_STATE = Start;
+      }
 
     default:
       break;
