@@ -29,7 +29,7 @@ void Lock(){
       if(A2){
         SM1_STATE = Pressed;
       }
-      else if(A7 && PORTB = 0x01){
+      else if(A7 && PORTB == 0x01){
         SM1_STATE = Inside;
       }
       break;
