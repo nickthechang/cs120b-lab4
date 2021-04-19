@@ -26,9 +26,6 @@ void Lock(){
       if(A2){
         SM1_STATE = Pressed;
       }
-      else if(A7){
-        SM1_STATE = Inside;
-      }
       break;
     
     case(Pressed):
@@ -38,10 +35,7 @@ void Lock(){
       break;
 
     case(Released):
-      if(PINA == 0x00){
-        SM1_STATE = Released;
-      }
-      else if(!A1){
+      if(A0 || A2){
         SM1_STATE = Start;
       }
       else if(A1){
@@ -56,9 +50,6 @@ void Lock(){
   switch(SM1_STATE){
     case Start:
       PORTB = 0x00;
-      break;
-    case Inside:
-      PORTB = 0x01;
       break;
     case Open:
       PORTB = 0x02;
