@@ -32,6 +32,9 @@ void Lock(){
       if(!A2){
         SM1_STATE = Released;
       }
+      if(A0 || A1){
+         SM1_STATE = Start;
+      }
       break;
 
     case(Released):
