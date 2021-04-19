@@ -55,11 +55,9 @@ void Lock(){
       break;
       
     case(Open):
-      if(B == 0){
-        
-      }
       SM1_STATE = Start;
-
+      break;
+      
     default:
       break;
   }
