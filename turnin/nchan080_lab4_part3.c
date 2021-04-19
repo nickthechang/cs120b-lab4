@@ -57,7 +57,7 @@ void Lock(){
       PORTB = 0x00;
       break;
     case Open:
-      PORTB = 0x02;
+      PORTB = 0x01;
       break;
 
     default:
