@@ -1,11 +1,23 @@
-#include <stdio.h>
+/*	Author: lab
+ *  Partner(s) Name: 
+ *	Lab Section:
+ *	Assignment: Lab #  Exercise #
+ *	Exercise Description: [optional - include for your own benefit]
+ *
+ *	I acknowledge all content contained herein, excluding template or example
+ *	code, is my own original work.
+ */
+#include <avr/io.h>
+#ifdef _SIMULATE_
+#include "simAVRHeader.h"
+#endif
 
 enum SM1_STATES {Start, Inside, Pressed, Released, Open} SM1_STATE;
 
 
 void Lock(){
 
-  unsigned char A0 = PINA & 0x01;
+  //unsigned char A0 = PINA & 0x01;
   unsigned char A1 = PINA & 0x02;
   unsigned char A2 = PINA & 0x04;
   unsigned char A7 = PINA & 0x80;
